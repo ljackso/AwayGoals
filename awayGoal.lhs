@@ -41,14 +41,11 @@ both teams have scored the same amount of away goals in a draw, it still returns
 > getOutcome l1 l2          | resultNoRule /= Draw      = resultNoRule
 >                           | otherwise                 = getGameOutcome (Result aA aB) 
 >                               where
->                                   hA              = getHomeGoals l1
 >                                   aA              = getAwayGoals l2
->                                   hB              = getHomeGoals l2
 >                                   aB              = getAwayGoals l1
->                                   overallScore    = Result (hA + aA) (hB + aB)
+>                                   overallScore    = Result ((getHomeGoals l1) + aA) ((getHomeGoals l2) + aB)
 >                                   resultNoRule    = getGameOutcome overallScore
 >    
->
 
 
 Gets a single matches outcome, team A is assumed to be the home team
